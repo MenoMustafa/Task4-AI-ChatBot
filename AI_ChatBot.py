@@ -108,8 +108,9 @@ def bag_words(sentence, words, show_details=False):
 
     return(numpy.array(bag))
   
-
+# Make a prediction of response
 ERROR_THRESHOLD = 0.30
+
 def classify(sentence):
     results = model.predict([bag_words(sentence, words)])[0]
     results = [[i,r] for i,r in enumerate(results) if r>ERROR_THRESHOLD]
@@ -127,3 +128,8 @@ def response(sentence, userID='123', show_details=False):
                 if i['tag'] == results[0][0]:
                     return print(random.choice(i['responses']))
 
+ # response('Where can we locate you?')
+
+# response("Hi there!", show_details=True)
+
+#  response('Bye')
